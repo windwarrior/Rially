@@ -34,3 +34,12 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+
+# media files
+media/
+
+# databases
+*.sqlite
+
+# settings
+settings.py
