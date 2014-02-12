@@ -39,7 +39,7 @@ nosetests.xml
 media/
 
 # databases
-*.sqlite
+*.sqlite3
 
 # settings
 settings.py

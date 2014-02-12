@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block body %}
+{% if user.riallyuser %}
+    <h1> Deelnemers ({{ user.riallyuser.team.team_name }}): </h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th width="80%"> Naam </th>
+                {% if user.riallyuser.is_team_captain %} <th> Verwijderen </th> {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+        {% for member in user.riallyuser.team.riallyuser_set.all %}
+            <tr><td>{{ member.user }} {% if member.is_team_captain %} (Teamcaptain) {% endif %}</td>{% if user.riallyuser.is_team_captain %} <td><button type="button" class="btn btn-danger">Verwijderen</button>{% endif %}</tr>
+        {% endfor %}
+        <tbody>
+    </table>
+    {% if user.riallyuser.is_team_captain %}
+        <button type="button" class="btn btn-success">Toevoegen</button>
+    {% endif %}
+{% else %}
+    <div class="alert alert-danger">Jij bent geen Rially user, ga maar naar de admin met je superkrachten</div>
+{% endif %}
+{% endblock %}
