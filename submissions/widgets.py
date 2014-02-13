@@ -1,7 +1,7 @@
-from django.forms.widgets import Input
+from django.forms.widgets import FileInput
 from django.template.loader import render_to_string
 
-class ImageUploadWithPreviewWidget(Input):
+class ImageUploadWithPreviewWidget(FileInput):
     def render(self, name, value, attrs=None):
         if value is None: value = ''
 

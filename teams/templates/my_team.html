@@ -11,7 +11,7 @@
         </thead>
         <tbody>
         {% for member in user.riallyuser.team.riallyuser_set.all %}
-            <tr><td>{{ member.user }} {% if member.is_team_captain %} (Teamcaptain) {% endif %}</td>{% if user.riallyuser.is_team_captain %} <td><button type="button" class="btn btn-danger">Verwijderen</button>{% endif %}</tr>
+            <tr><td>{{ member.user }} {% if member.is_team_captain %} (Teamcaptain) {% endif %}</td>{% if user.riallyuser.is_team_captain %} <td><a class="btn btn-danger" href="{% url 'teams.views.delete' member.team.pk member.pk %}">Verwijderen</button>{% endif %}</tr>
         {% endfor %}
         <tbody>
     </table>
