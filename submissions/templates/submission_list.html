@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block body %}
+<table class="table">
+    <thead>
+        <tr>
+            <th width="33%"> Opdracht </th>
+            <th width="33%"> Foto </th>
+            <th width="33%"> Modifiers </th>
+            <th width="auto"> Wijzig </th>
+            <th width="auto"> Verwijder </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for submission in submission_list %}
+            <tr>
+                <td> {{ submission.assignment }} </td>
+                <td> <a href="{{ MEDIA_URL }}{{ submission.photo }}"> foto </a> </td>
+                <td> 
+                    {% for mod in submission.modifiers.all %} 
+                        <span style="margin: 5px;" class="label label-primary"> {{ mod.modifier }} </span> 
+                    {% empty %}
+                        Geen
+                    {% endfor %} 
+                </td>
+                <td> <a class="btn btn-warning" href="{% url 'submission_edit' submission.pk %}">Wijzig</a> </td>
+                <td> <a class="btn btn-danger" href="{% url 'submission_delete' submission.pk %}">Verwijder</a> </td>
+            </tr>
+        {% empty %}
+            <tr> <td>Je hebt nog geen opdrachten ingeleverd </td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
