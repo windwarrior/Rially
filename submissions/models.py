@@ -5,7 +5,7 @@ class Submission(models.Model):
     photo = models.ImageField(upload_to="submissions/")
 
     assignment = models.ForeignKey('Assignment')
-    modifiers = models.ManyToManyField('Modifier')
+    modifiers = models.ManyToManyField('Modifier', blank=True)
 
     def __str__(self):
         return self.assignment.title

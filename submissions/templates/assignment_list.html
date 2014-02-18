@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block body %}
+<table class="table">
+    <thead>
+        <tr>
+            <th width="auto"> # </th>
+            <th width="100%"> Opdracht </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for assignment in assignment_list %}
+            <tr>
+                <td> {{ forloop.counter }} </td>
+                <td> {{ assignment.title }} </td>
+            </tr>
+        {% empty %}
+            <tr> <td>Er staan nog geen opdrachten online</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
