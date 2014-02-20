@@ -7,6 +7,7 @@ from submissions.widgets import ImageUploadWithPreviewWidget
 class SubmissionForm(ModelForm):
     class Meta:
         model = Submission
+        fields = ['photo','assignment','modifiers']
         widgets = {
 #            'photo': ImageWidget,
             'assignment': Select(attrs={'class': 'form-control'}),

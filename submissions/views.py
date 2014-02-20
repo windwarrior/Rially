@@ -11,25 +11,19 @@ from rially.decorators import require_team_captain
 def index(request):
     return render(request, 'submissions.html')
 
-#def new(request):
-#    if request.method == 'POST':
-#        form = SubmissionForm(request.POST, request.FILES)
-#        if form.is_valid():
-#            form.save()
-#            return HttpResponseRedirect(reverse('submissions.views.index'))
-#    else:
-#        form = SubmissionForm()
-#
-#    return render(request, 'new_photo.html', {
-#        'form': form,
-#    })
-
 class SubmissionCreate(CreateView):
     model = Submission
     form_class = SubmissionForm
     template_name = 'submission_form.html'
     success_url = reverse_lazy('submission_list')
     fields = ['photo', 'assignment', 'modifiers']
+
+    def form_valid(self, form):
+        print(self.request.user.riallyuser.team)
+        form.instance.team = self.request.user.riallyuser.team
+        form.save()
+
+        return super(SubmissionCreate, self).form_valid(form)
 
 class SubmissionUpdate(UpdateView):
     model = Submission
@@ -49,11 +43,11 @@ class SubmissionTeamView(ListView):
 
     def get_queryset(self):
         self.team = None
-        if self.request.user.riallyuser:
+        if hasattr(self.request.user, "riallyuser"):
             self.team = self.request.user.riallyuser.team
 
-        # self.submissions = Submission.objects.filter(team=self.team)
-        self.submissions = Submission.objects.all()
+        self.submissions = Submission.objects.filter(team=self.team)
+        #self.submissions = Submission.objects.all()
 
         return self.submissions
 

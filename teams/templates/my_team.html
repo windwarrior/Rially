@@ -16,7 +16,7 @@
         <tbody>
     </table>
     {% if user.riallyuser.is_team_captain %}
-        <button type="button" class="btn btn-success">Toevoegen</button>
+        <a href="{% url 'team_add_member' %}" class="btn btn-success">Toevoegen</a>
     {% endif %}
 {% else %}
     <div class="alert alert-danger">Jij bent geen Rially user, ga maar naar de admin met je superkrachten</div>

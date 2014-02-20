@@ -43,14 +43,14 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Team<b class="caret"></b></a>
 
                             <ul class="dropdown-menu">
-                                <li><a href="{% url 'teams.views.all_teams' %}">Alle teams</a></li>
+                                <li><a href="{% url 'all_teams_view' %}">Alle teams</a></li>
                                 <li class="divider"></li>
                                 <li><a href="{% url 'teams.views.my_team' %}">Mijn team</a></li>
                             </ul>
 
                         </li>
                     {% else %}
-                                <li><a href="{% url 'teams.views.all_teams' %}">Alle teams</a></li>
+                                <li><a href="{% url 'all_teams_view' %}">Alle teams</a></li>
                     {% endif %}
 
                     {% if user.riallyuser %}
@@ -66,7 +66,7 @@
 
                         </li>
                      {% else %}
-                        <li><a href="#">Alle opdrachten</a></li>
+                        <li><a href="{% url 'assignment_list' %}">Alle opdrachten</a></li>
                      {% endif %}
                 </ul>
 
