@@ -18,12 +18,10 @@ class SubmissionCreate(CreateView):
     success_url = reverse_lazy('submission_list')
     fields = ['photo', 'assignment', 'modifiers']
 
-    def form_valid(self, form):
-        print(self.request.user.riallyuser.team)
-        form.instance.team = self.request.user.riallyuser.team
-        form.save()
-
-        return super(SubmissionCreate, self).form_valid(form)
+    def get_form(self, form_class):
+        result = super(SubmissionCreate, self).get_form(form_class)
+        result.instance.team = self.request.user.riallyuser.team
+        return result
 
 class SubmissionUpdate(UpdateView):
     model = Submission

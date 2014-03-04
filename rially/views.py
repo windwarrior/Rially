@@ -4,4 +4,4 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login
 
 def index(request):
-    return render(request, 'base.html')
+    return render(request, 'index.html')

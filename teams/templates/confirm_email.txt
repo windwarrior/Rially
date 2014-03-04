@@ -1,0 +1,7 @@
+Beste,
+
+Je bent toegevoegd aan het Rially-team: {{ team }}, hiervoor moet je een account aanmaken op de rially site. Door naar {{ email_link }} te gaan kan je een account maken dat verbonden is aan je Rially Team!
+
+Als je straks een account hebt kan je de site gebruiken om Rially-opdrachten in te sturen!
+
+--De Riallycommissie

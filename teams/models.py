@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.contrib import admin
+from django.core.urlresolvers import reverse
+from rially.settings import SITE_ROOT
 # Create your models here.
 
 class Team(models.Model):
@@ -15,7 +17,7 @@ class RiallyUser(models.Model):
     is_team_captain = models.BooleanField()
 
     def __str__(self):
-        return self.title
+        return str(self.user)
 
 class TemporaryUser(models.Model):
     """
@@ -29,6 +31,9 @@ class TemporaryUser(models.Model):
 
     def __str__(self):
         return self.email
+
+    def get_absolute_url(self):
+        return SITE_ROOT + reverse('team_confirm', args=[self.email_link])
 
 admin.site.register(Team)
 admin.site.register(RiallyUser)

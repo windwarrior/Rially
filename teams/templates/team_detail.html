@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block body %}
+    <h1> Deelnemers ({{ team.team_name }}): </h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th width="80%"> Naam </th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for member in team.riallyuser_set.all %}
+            <tr>
+                <td>{{ member.user }} 
+                    {% if member.is_team_captain %} (Teamcaptain) {% endif %} 
+                </td>
+            </tr>
+        {% endfor %}
+        <tbody>
+    </table>
+{% endblock %}
