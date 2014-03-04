@@ -3,14 +3,17 @@ from django.contrib.auth.models import User
 from django.contrib import admin
 from django.core.urlresolvers import reverse
 from rially.settings import SITE_ROOT
+from django.utils.encoding import python_2_unicode_compatible
 # Create your models here.
 
+@python_2_unicode_compatible
 class Team(models.Model):
     team_name = models.CharField(max_length=255)
 
     def __str__(self):
         return self.team_name
 
+@python_2_unicode_compatible
 class RiallyUser(models.Model):
     user = models.OneToOneField(User, primary_key=True)
     team = models.ForeignKey(Team)
@@ -19,6 +22,7 @@ class RiallyUser(models.Model):
     def __str__(self):
         return str(self.user)
 
+@python_2_unicode_compatible
 class TemporaryUser(models.Model):
     """
         A user that hasn't confirmed its email yet and therefore is no
