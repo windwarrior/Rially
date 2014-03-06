@@ -72,7 +72,7 @@
 
                 {% if user.is_authenticated %}
                     <div class="nav navbar-nav navbar-right">
-                        <p class="navbar-text"> Ingelogd als {{ user }} </p>
+                        <p class="navbar-text"> Ingelogd als {{ user }} (<a href="{% url 'rially.views.logout_view' %}">loguit</a>) </p>
                     </div>
                 {% else %}
                     <ul class="nav navbar-nav navbar-right">

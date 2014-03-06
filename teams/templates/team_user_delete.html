@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block body %}
+
+<form action="" method="post">{% csrf_token %}
+    <div class="alert alert-danger">
+        <p>Weet je zeker dat je de deze teammember wil verwijderen?</p>
+    </div>
+    <button class="btn btn-danger" type="submit" value="Confirm"> Verwijder </button>
+    <a href="{% url 'teams.views.my_team' %}" class="btn btn-success"> Terug </a>
+</form>
+{% endblock %}

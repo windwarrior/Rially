@@ -1,6 +1,5 @@
-from django.forms import ModelForm, EmailInput, TextInput, PasswordInput, RegexField, CharField, ValidationError
-from teams.forms import ModelForm
-from teams.models import TemporaryUser
+from django.forms import ModelForm, EmailInput, TextInput, PasswordInput, RegexField, CharField, EmailField, ValidationError
+from teams.models import TemporaryUser, Team
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext, ugettext_lazy as _
@@ -32,3 +31,11 @@ class TemporaryUserConfirmForm(UserCreationForm):
     password2 = CharField(label=_("Password confirmation"),
         widget=PasswordInput(attrs={'class': 'form-control'}),
         help_text=_("Enter the same password as above, for verification."))
+
+
+class TeamCreateForm(ModelForm):
+    email = EmailField()
+
+    class Meta:
+        model = Team
+        fields = ['team_name']

@@ -15,6 +15,7 @@ urlpatterns = patterns('',
     url(r'^teams/', include('teams.urls')),
     url(r'^$', 'rially.views.index'),
     url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'login.html'}),
+    url(r'^logout/$', 'rially.views.logout_view')
 )
 
 # ... your normal urlpatterns here

@@ -1,0 +1,5 @@
+Beste,
+
+Je team {{ team }} is aangemeld in het riallysysteem, als je de volgende link volgt kan je je team aanmaken en daarna je teammembers toevoegen: {{ email_link }}. Jij bent benoemd tot teamcaptain, dus jij kan als enige nieuwe mensen toevoegen aan dit team.
+
+--De Riallycommissie

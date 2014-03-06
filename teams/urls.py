@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-from teams.views import TemporaryUserCreateView, TeamView, TeamDetail
+from teams.views import TemporaryUserCreateView, TeamView, TeamDetail, TeamCreateView
 
 urlpatterns = patterns('',
     # Examples:
@@ -9,5 +9,6 @@ urlpatterns = patterns('',
     url(r'^myteam/delete/(?P<teamId>\d+)/(?P<userId>\d+)/$', 'teams.views.delete'),
     url(r'^myteam/add/', TemporaryUserCreateView.as_view(), name='team_add_member'),
     # url(r'^blog/', include('blog.urls')),
-    url(r'new_teammember/(?P<slug>[\w-]+)/$', 'teams.views.team_confirm', name='team_confirm')
+    url(r'new_teammember/(?P<slug>[\w-]+)/$', 'teams.views.team_confirm', name='team_confirm'),
+    url(r'new_team/$', TeamCreateView.as_view(), name='team_create')
 )
