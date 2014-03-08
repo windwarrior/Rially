@@ -4,10 +4,12 @@ from django.http import HttpResponseRedirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
 from django.utils.decorators import method_decorator
+from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
 
 from submissions.forms import SubmissionForm
 from submissions.models import Submission, Assignment
+from teams.models import Team
 from rially.decorators import require_team_captain, require_riallyuser
 
 def index(request):
@@ -50,7 +52,7 @@ class SubmissionDelete(DeleteView):
         return super(SubmissionDelete, self).dispatch(*args, **kwargs)
 
 class SubmissionTeamView(ListView):
-    template_name = 'submission_list.html'
+    template_name = 'submission_team_list.html'
     context_object_name = 'submission_list'
 
     def get_queryset(self):
@@ -62,6 +64,15 @@ class SubmissionTeamView(ListView):
         #self.submissions = Submission.objects.all()
 
         return self.submissions
+
+class SubmissionViewByTeam(ListView):
+    template_name = 'submission_list.html'
+    context_object_name = 'submission_list'
+
+    def get_queryset(self):
+        team = get_object_or_404(Team, pk=self.kwargs["pk"])
+
+        return Submission.objects.filter(team=team)
 
 class AssignmentView(ListView):
     template_name = 'assignment_list.html'

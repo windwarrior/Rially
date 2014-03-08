@@ -7,6 +7,8 @@
             <th width="33%"> Opdracht </th>
             <th width="33%"> Foto </th>
             <th width="33%"> Modifiers </th>
+            <th width="auto"> Wijzig </th>
+            <th width="auto"> Verwijder </th>
         </tr>
     </thead>
     <tbody>
@@ -21,6 +23,8 @@
                         Geen
                     {% endfor %} 
                 </td>
+                <td> <a class="btn btn-warning" href="{% url 'submission_edit' submission.pk %}">Wijzig</a> </td>
+                <td> <a class="btn btn-danger" href="{% url 'submission_delete' submission.pk %}">Verwijder</a> </td>
             </tr>
         {% empty %}
             <tr> <td>Je hebt nog geen opdrachten ingeleverd </td></tr>

@@ -4,9 +4,8 @@
     <thead>    
         <tr>
             <th width="25%"> Teamnaam </th>
-            <th width="25%"> Teamdeelnemers </th>
-            <th width="25%"> Puzzels </th>
-            <th width="25%"> Opdrachten </th>
+            <th width="75%"> Teamdeelnemers </th>
+            <th width="auto"> Opdrachten </th>
         </tr>
     </thead>
 
@@ -19,8 +18,7 @@
                     {{ member.user }}
                  {% endfor %}
             </td>
-            <td></td>
-            <td></td>
+            <td><a href="{% url 'submission_list_by_team' team.pk %}" style="background-color: #f5028e; color: white;" class="btn btn-default"> Opdrachten </a></td>
         </tr>
     {% endfor %}
     </tbody>
